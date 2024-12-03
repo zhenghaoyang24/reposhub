@@ -12,8 +12,18 @@ export const useUserStore = defineStore('user', () => {
                 dataTheme.value = 'light'
             }
         }
-        return {storeChangeTheme, dataTheme}
+    const storeGetTheme = ()=>{
+        if (dataTheme.value === 'dark') {
+            window.document.documentElement.setAttribute('theme', 'dark')
+        }else{
+            window.document.documentElement.setAttribute('theme', 'light')
+        }
+    }
+
+        return {storeChangeTheme, dataTheme,storeGetTheme}
     }, {
-        persist: true
+        persist: {
+            pick:['dataTheme']
+        }
     }
 )

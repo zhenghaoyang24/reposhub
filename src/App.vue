@@ -1,7 +1,12 @@
 <script setup lang="ts">
-
-
 import NavBar from "@/components/NavBar.vue";
+import {onBeforeMount} from "vue";
+import {useUserStore} from "@/stores/user.ts";
+const userStore = useUserStore();
+onBeforeMount(()=>{
+  userStore.storeGetTheme()
+})
+
 </script>
 
 <template>

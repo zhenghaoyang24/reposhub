@@ -1,8 +1,14 @@
 @import "@/assets/variable.less";
 
 :root[theme="light"]{
-  --background-color: @p-color-dark;
+  --p-color: @p-color-light;
+  --p-text-color: @p-text-color-light;
+  --border-color: @box-border-color-light;
+  --theme-button-image: url('icons/aside-bar/theme-button-moon.png');
 }
 :root[theme="dark"]{
-  --background-color: @p-color-light;
+  --p-color: @p-color-dark;
+  --p-text-color: @p-text-color-dark;
+  --border-color: @box-border-color-dark;
+  --theme-button-image:url('icons/aside-bar/theme-button-son.png');
 }

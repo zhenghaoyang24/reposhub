@@ -11,7 +11,9 @@
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
+    "less": "^4.2.1",
     "pinia": "^2.2.6",
+    "pinia-plugin-persistedstate": "^4.1.3",
     "vue": "^3.5.13",
     "vue-router": "^4.4.5"
   },
@@ -21,6 +23,7 @@
     "@vitejs/plugin-vue": "^5.2.1",
     "@vue/tsconfig": "^0.7.0",
     "npm-run-all2": "^7.0.1",
+    "sass": "^1.81.1",
     "typescript": "~5.6.3",
     "vite": "^6.0.1",
     "vite-plugin-vue-devtools": "^7.6.5",

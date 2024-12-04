@@ -1,31 +1,48 @@
 <script setup lang="ts">
-import ThemeChange from '@/components/ThemeChange.vue'
+import ThemeChange from "@/components/ThemeChange.vue";
+import SearchInput from "@/components/SearchInput.vue";
+import GithubIcon from "@/components/icons/GithubIcon.vue";
+import router from "@/router";
+
+function toGithubRepoBtn() {
+  window.open('https://github.com/zhenghaoyang24/reposhub', '_blank');
+}
 
 </script>
 
 <template>
   <nav class="navbar">
     <router-link to="/home">Repos</router-link>
-    <input type="text" placeholder="type">
+    <SearchInput></SearchInput>
     <div class="nav-ctrl">
       <ThemeChange></ThemeChange>
-      <ThemeChange></ThemeChange>
+      <span class="github-icon" @click="toGithubRepoBtn" title="github">
+        <GithubIcon></GithubIcon>
+      </span>
 
     </div>
-
-
   </nav>
 
 </template>
 
 <style scoped lang="less">
 @import "@/assets/base.less";
+.github-icon{
+  cursor: pointer;
+  .justify-space-between();
+  color: var(--s-text-color);
+}
 .nav-ctrl{
-  display: flex;
+  .justify-space-between();
+  >span{
+    padding-left: 10px;
+  }
 }
 .navbar{
+  background-color: var(--bg-color-nav);
+  transition: all @transition-time;
   .justify-space-between();
-  padding: 10px;
+  padding: 15px;
   border-bottom: 1px solid var(--border-color);
 }
 

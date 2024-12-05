@@ -47,7 +47,7 @@ onUnmounted(() => {
         <span class="search-icon">
           <SearchIcon></SearchIcon>
         </span>
-        <input ref="searchInput" type="text" placeholder="" class="search-input" :value="inputValue">
+        <input ref="searchInput" type="text" placeholder="type 'Esc' to exit the search" class="search-input" :value="inputValue">
         <span></span>
       </div>
 

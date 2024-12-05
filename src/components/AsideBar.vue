@@ -1,9 +1,13 @@
 <script setup lang="ts">
+import categories from "@/data/category.json"
+import CategoryItem from "@/components/CategoryItem.vue";
 
 </script>
 
 <template>
   <aside class="left-aside-box">
+    <CategoryItem v-for="item in categories" :category="item.type"></CategoryItem>
+
 
 
   </aside>
@@ -12,10 +16,13 @@
 <style scoped lang="less">
 @import "@/assets/base.less";
 .left-aside-box{
+  border: 1px red solid;
+  padding: 10px;
   width: @left-aside-width;
   overflow-y: auto; /* 当内容超出时出现垂直滚动条 */
   height: calc(100vh - @nav-height);
   background: none;
+  box-sizing: border-box;
 
   &::-webkit-scrollbar {
     width: 10px;

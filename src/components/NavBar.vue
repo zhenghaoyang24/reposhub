@@ -32,19 +32,22 @@ const searchStatue = inject('searchStatue', () => {
 <style scoped lang="less">
 @import "@/assets/base.less";
 
-.github-icon{
+.github-icon {
   cursor: pointer;
   .justify-space-between();
   color: var(--s-text-color);
 }
-.nav-ctrl{
+
+.nav-ctrl {
   .justify-space-between();
-  >span{
+
+  > span {
     margin-left: 10px;
   }
 }
-.navbar{
-  height: 68px;
+
+.navbar {
+  height: @nav-height;
   box-sizing: border-box;
   background-color: var(--bg-color-nav);
   transition: all @transition-time;

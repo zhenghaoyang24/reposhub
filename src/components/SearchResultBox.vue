@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import {inject, onMounted, onUnmounted, ref} from "vue";
+import {inject, onMounted, onUnmounted, ref, watch} from "vue";
 import SearchIcon from "@/components/icons/SearchIcon.vue";
+import ClearIcon from "@/components/icons/ClearIcon.vue";
 // 搜索框状态  获取状态改变inject
 const changeSearchStatue = inject('changeSearchStatueFn', () => {
   console.log("no function")
@@ -10,7 +11,11 @@ function changeSearchStatueBtn() {
   changeSearchStatue()
 }
 // 输入内容
-const inputValue = ref<String|null>('')
+const inputValue = ref<String>('')
+function clearInputValueBtn(){  //清空input值
+  inputValue.value = ''
+  searchInput.value.focus();
+}
 // 获取focus  绑定input
 const searchInput= ref<any>(null)
 onMounted(() => {
@@ -19,7 +24,7 @@ onMounted(() => {
     // 使用DOM原生方法让input元素获取焦点
     searchInput.value.focus();
     setTimeout(()=>{
-      inputValue.value = null   //没有用
+      inputValue.value = ''   //没有用
     },10)
   }
   // 添加监听 按下esc
@@ -42,23 +47,21 @@ onUnmounted(() => {
 <template>
   <div class="search-body" @click.self="changeSearchStatueBtn">
     <div class="search-box">
-
       <div class="search-input-box">
-        <span class="search-icon">
+        <span class="search-input-icon-base">
           <SearchIcon></SearchIcon>
         </span>
-        <input ref="searchInput" type="text" placeholder="type 'Esc' to exit the search" class="search-input" :value="inputValue">
-        <span></span>
+        <input  ref="searchInput" type="text" placeholder="type 'Esc' to exit the search" class="search-input" v-model="inputValue">
+        <span v-show="inputValue.length>0" class="search-input-icon-base" @click="clearInputValueBtn">
+          <ClearIcon></ClearIcon>
+        </span>
       </div>
-
-
     </div>
   </div>
 </template>
 
 <style scoped lang="less">
 @import "@/assets/base.less";
-
 .search-input-box {
   .flex-center();
   width: 100%;
@@ -67,12 +70,13 @@ onUnmounted(() => {
   cursor: auto;
   padding: 0 3px;
   box-sizing: border-box;
-  .search-icon{
+  .search-input-icon-base{
     display: block;
     color: var(--s-text-color);
-    width: 24px;
-    height: 24px;
+    width: 25px;
+    height: 25px;
     .flex-center();
+    .hover-bg-color()
   }
 }
 

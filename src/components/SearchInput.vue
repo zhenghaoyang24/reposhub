@@ -26,7 +26,7 @@ onUnmounted(() => {
 
 <template>
   <div class="search-input-div" @click="changeSearchStatueBtn()">
-    type '/' to search
+    type ' / ' to search
   </div>
 </template>
 

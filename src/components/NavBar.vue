@@ -3,17 +3,22 @@ import ThemeChange from "@/components/ThemeChange.vue";
 import SearchInput from "@/components/SearchInput.vue";
 import GithubIcon from "@/components/icons/GithubIcon.vue";
 import router from "@/router";
+import {inject} from "vue";
 
 function toGithubRepoBtn() {
   window.open('https://github.com/zhenghaoyang24/reposhub', '_blank');
 }
+
+const searchStatue = inject('searchStatue', () => {
+  console.log("no searchStatue")
+})
 
 </script>
 
 <template>
   <nav class="navbar">
     <router-link to="/home">Repos</router-link>
-    <SearchInput></SearchInput>
+    <SearchInput v-if="!searchStatue"></SearchInput>
     <div class="nav-ctrl">
       <ThemeChange></ThemeChange>
       <span class="github-icon" @click="toGithubRepoBtn" title="github">
@@ -39,6 +44,8 @@ function toGithubRepoBtn() {
   }
 }
 .navbar{
+  height: 68px;
+  box-sizing: border-box;
   background-color: var(--bg-color-nav);
   transition: all @transition-time;
   .justify-space-between();

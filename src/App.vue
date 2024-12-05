@@ -15,11 +15,12 @@ const changeSearchStatue = () => {
 }
 // 传递方法函数，则可以实现底层组件更改顶层组件的数据（但实则还是顶层组件在更改）
 provide('changeSearchStatueFn', changeSearchStatue)
+provide('searchStatue', searchStatue)
 
 </script>
 
 <template>
-  <SearchResultBox v-show="searchStatue"></SearchResultBox>
+  <SearchResultBox v-if="searchStatue"></SearchResultBox>
   <NavBar></NavBar>
 </template>
 

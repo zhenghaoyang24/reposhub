@@ -1,5 +1,5 @@
 <script setup lang="js">
-import {inject} from 'vue'
+import {inject,onMounted,onUnmounted} from 'vue'
 
 const changeSearchStatue = inject('changeSearchStatueFn', () => {
   console.log("no function")
@@ -7,11 +7,25 @@ const changeSearchStatue = inject('changeSearchStatueFn', () => {
 function changeSearchStatueBtn(){
   changeSearchStatue()
 }
+// 按下 / 搜索
+const handleKeyDownSearch = (e) => {
+  if (e.key === '/') {
+    changeSearchStatue()
+  }
+};
+// 监听
+onMounted(() => {
+  window.addEventListener('keydown', handleKeyDownSearch);
+});
+// 在组件卸载时移除全局键盘按下事件监听，避免内存泄漏
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeyDownSearch);
+});
 
 </script>
 
 <template>
-  <div class="search-input" @click="changeSearchStatueBtn()">
+  <div class="search-input-div" @click="changeSearchStatueBtn()">
     type '/' to search
   </div>
 </template>
@@ -19,7 +33,7 @@ function changeSearchStatueBtn(){
 <style scoped lang="less">
 @import "@/assets/base.less";
 
-.search-input {
+.search-input-div {
   font-weight: lighter;
   color: var(--s-text-color);
   width: 200px;
@@ -30,9 +44,5 @@ function changeSearchStatueBtn(){
   margin: auto;
   border: @border-1-solid;
   transition: all @transition-time;
-}
-
-.search-input::placeholder {
-  color: var(--s-text-color);
 }
 </style>

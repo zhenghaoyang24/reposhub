@@ -1,36 +1,38 @@
-<script setup lang="ts">
+<script setup lang="js">
+import {inject} from 'vue'
+
+const changeSearchStatue = inject('changeSearchStatueFn', () => {
+  console.log("no function")
+})
+function changeSearchStatueBtn(){
+  changeSearchStatue()
+}
 
 </script>
 
 <template>
-  <input disabled type="text" placeholder="type '/' to search" class="search-input">
-  <div class="search-content-box">
-
+  <div class="search-input" @click="changeSearchStatueBtn()">
+    type '/' to search
   </div>
 </template>
 
 <style scoped lang="less">
 @import "@/assets/base.less";
-.search-content-box{
-  position: absolute;
-  width: 100%;
 
-  //height: 100px;
-  background-color: blue;
-}
-
-
-.search-input{
+.search-input {
+  font-weight: lighter;
+  color: var(--s-text-color);
+  width: 200px;
   padding: 7px;
+  font-size: 15px;
   border-radius: 5px;
   cursor: pointer;
-  margin: 0 auto;
+  margin: auto;
   border: @border-1-solid;
-  outline: none;
-  background: none;
   transition: all @transition-time;
 }
-.search-input::placeholder{
-  color:var(--s-text-color);
+
+.search-input::placeholder {
+  color: var(--s-text-color);
 }
 </style>

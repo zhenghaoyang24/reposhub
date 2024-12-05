@@ -19,7 +19,6 @@ function toGithubRepoBtn() {
       <span class="github-icon" @click="toGithubRepoBtn" title="github">
         <GithubIcon></GithubIcon>
       </span>
-
     </div>
   </nav>
 
@@ -27,6 +26,7 @@ function toGithubRepoBtn() {
 
 <style scoped lang="less">
 @import "@/assets/base.less";
+
 .github-icon{
   cursor: pointer;
   .justify-space-between();
@@ -35,14 +35,14 @@ function toGithubRepoBtn() {
 .nav-ctrl{
   .justify-space-between();
   >span{
-    padding-left: 10px;
+    margin-left: 10px;
   }
 }
 .navbar{
   background-color: var(--bg-color-nav);
   transition: all @transition-time;
   .justify-space-between();
-  padding: 15px;
+  padding: @nav-padding;
   border-bottom: 1px solid var(--border-color);
 }
 

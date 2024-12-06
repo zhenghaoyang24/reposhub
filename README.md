@@ -27,7 +27,3 @@ pnpm dev
 ```
 
 ### Type-Check, Compile and Minify for Production
-
-```sh
-pnpm build
-```

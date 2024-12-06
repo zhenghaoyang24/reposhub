@@ -25,5 +25,3 @@ pnpm install
 ```sh
 pnpm dev
 ```
-
-### Type-Check, Compile and Minify for Production

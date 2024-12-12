@@ -1,3 +1,3 @@
 # reposhub
 
-The project is in development
+The project is in development.

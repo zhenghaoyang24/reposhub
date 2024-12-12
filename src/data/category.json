@@ -8,6 +8,16 @@
     "type": "tools",
     "type_description": "A conventional storage space used for storing general goods.",
     "icon":"dashicons:admin-site"
+  },
+  {
+    "type": "plugging",
+    "type_description": "A conventional storage space used for storing general goods.",
+    "icon":"icon-park-outline:plug"
+  },
+  {
+    "type": "application",
+    "type_description": "A conventional storage space used for storing general goods.",
+    "icon":"eos-icons:application"
   }
 ]
 

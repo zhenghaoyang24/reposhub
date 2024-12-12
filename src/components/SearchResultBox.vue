@@ -4,7 +4,7 @@ import SearchIcon from "@/components/icons/SearchIcon.vue";
 import ClearIcon from "@/components/icons/ClearIcon.vue";
 // 搜索框状态  获取状态改变inject
 const changeSearchStatue = inject('changeSearchStatueFn', () => {
-  console.log("no function")
+  console.warn("no function changeSearchStatue")
 })
 // 关闭搜索框
 function changeSearchStatueBtn() {

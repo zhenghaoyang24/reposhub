@@ -47,6 +47,7 @@ const searchStatue = inject('searchStatue', () => {
 }
 
 .navbar {
+  user-select: none;
   height: @nav-height;
   box-sizing: border-box;
   background-color: var(--bg-color-nav);

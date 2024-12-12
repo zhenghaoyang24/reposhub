@@ -34,6 +34,7 @@ onUnmounted(() => {
 @import "@/assets/base.less";
 
 .search-input-div {
+  user-select: none;
   font-weight: lighter;
   color: var(--s-text-color);
   width: 200px;

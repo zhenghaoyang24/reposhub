@@ -15,6 +15,7 @@
     "icon":"icon-park-outline:plug"
   },
   {
+    "key": "application",
     "type": "application",
     "type_description": "A conventional storage space used for storing general goods.",
     "icon":"eos-icons:application"

@@ -2,6 +2,16 @@
   {
     "type": "application/web",
     "author": "zhenghaoyang24",
+    "reposName": "you-todo"
+  },
+  {
+    "type": "application/web",
+    "author": "zhenghaoyang24",
     "reposName": "vocabverse"
+  },
+  {
+    "type": "application/mini-project",
+    "author": "zhenghaoyang24",
+    "reposName": "blueblue-words"
   }
 ]

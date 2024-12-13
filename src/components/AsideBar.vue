@@ -24,7 +24,7 @@ const theCategoryBtn = (value: String) => {
 @import "@/assets/base.less";
 
 .left-aside-box {
-  transition: all @transition-time;
+  transition: border-color @transition-time;
   border-right: @border-1-solid;
 
   h4 {

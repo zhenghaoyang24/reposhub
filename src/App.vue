@@ -71,6 +71,7 @@ watchEffect(() => {
   padding-top: 15px;
   margin-top: 15px;
   border-top: @border-1-solid;
+  transition: border-top-color @transition-time;
   color: #fdfdfd;
 }
 

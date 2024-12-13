@@ -32,6 +32,7 @@ const toTheReposBtn = ()=>{
   border-radius: 5px;
   padding: 10px;
   display: block;
+  transition: all @transition-time;
   border: @border-1-solid;
   color: #fdfdfd;
   .repos-card-url{

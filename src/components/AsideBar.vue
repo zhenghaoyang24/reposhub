@@ -2,8 +2,9 @@
 import categories from "@/data/category.json"
 import CategoryItem from "@/components/CategoryItem.vue";
 import {useUserStore} from "@/stores/user.ts";
+
 const store = useUserStore();
-const theCategoryBtn = (value:String)=>{
+const theCategoryBtn = (value: String) => {
   store.storeChangeCategory(value)
 }
 
@@ -13,9 +14,8 @@ const theCategoryBtn = (value:String)=>{
   <aside class="left-aside-box">
     <h4>Category</h4>
     <CategoryItem category="collect" icon="lucide:star" @click="theCategoryBtn('collect')"></CategoryItem>
-    <CategoryItem v-for="item in categories" :category="item.type" :icon="item.icon" @click="theCategoryBtn(item.type)"></CategoryItem>
-
-
+    <CategoryItem v-for="item in categories" :category="item.type" :icon="item.icon"
+                  @click="theCategoryBtn(item.type)"></CategoryItem>
 
   </aside>
 </template>
@@ -23,13 +23,16 @@ const theCategoryBtn = (value:String)=>{
 <style scoped lang="less">
 @import "@/assets/base.less";
 
-.left-aside-box{
+.left-aside-box {
   transition: all @transition-time;
   border-right: @border-1-solid;
-  h4{
+
+  h4 {
+    transition: color @transition-time;
     font-weight: normal;
     color: var(--p-text-color);
   }
+
   padding: 5px;
   width: @left-aside-width;
   overflow-y: auto; /* 当内容超出时出现垂直滚动条 */
@@ -41,11 +44,14 @@ const theCategoryBtn = (value:String)=>{
     width: 10px;
     background-color: #2c2c2c;
   }
+
   /* 暗色模式下的滚动条滑块样式 */
+
   &::-webkit-scrollbar-thumb {
     background-color: #9e9e9e;
     border-radius: 5px;
-    &:hover{
+
+    &:hover {
       background-color: #c6c6c6;
     }
   }

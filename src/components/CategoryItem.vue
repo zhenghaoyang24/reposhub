@@ -40,6 +40,7 @@ const props = defineProps({
   display: inline-flex;
   align-items: center;
   >span{
+    transition: color @transition-time;
     color: var(--p-text-color);
     padding-left: 10px;
   }

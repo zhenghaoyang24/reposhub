@@ -17,7 +17,7 @@ const searchStatue = inject('searchStatue', () => {
 
 <template>
   <nav class="navbar">
-    <router-link to="/home">Repos</router-link>
+    <router-link to="/home" class="web-icon">Repos</router-link>
     <SearchInput v-if="!searchStatue"></SearchInput>
     <div class="nav-ctrl">
       <ThemeChange></ThemeChange>
@@ -31,7 +31,10 @@ const searchStatue = inject('searchStatue', () => {
 
 <style scoped lang="less">
 @import "@/assets/base.less";
-
+@font-face {
+  font-family: 'AmaticSC-Bold'; /* 自定义字体的名称 */
+  src: url('@/assets/font/Pacifico-Regular.ttf') format("truetype");
+}
 .github-icon {
   cursor: pointer;
   .justify-space-between();
@@ -47,6 +50,12 @@ const searchStatue = inject('searchStatue', () => {
 }
 
 .navbar {
+  .web-icon{
+    color: var(--s-text-color);
+    font-size: 25px;
+    text-decoration: none;
+    font-family: 'AmaticSC-Bold', sans-serif;
+  }
   user-select: none;
   height: @nav-height;
   box-sizing: border-box;

@@ -2,7 +2,12 @@
   {
     "type": "site",
     "type_description": "A conventional storage space used for storing general goods.",
-    "icon":"mdi:tools"
+    "icon":"mdi:tools",
+    "children":[
+      {
+        "type":"Site generator"
+      }
+    ]
   },
   {
     "type": "tools",
@@ -15,10 +20,14 @@
     "icon":"icon-park-outline:plug"
   },
   {
-    "key": "application",
     "type": "application",
     "type_description": "A conventional storage space used for storing general goods.",
-    "icon":"eos-icons:application"
+    "icon":"eos-icons:application",
+    "children":[
+      { "type":"web", "type_description": "A conventional storage space used for storing general goods."},
+      { "type":"mobile", "type_description": "A conventional storage space used for storing general goods."},
+      { "type":"mini-project", "type_description": "A conventional storage space used for storing general goods."}
+    ]
   }
 ]
 

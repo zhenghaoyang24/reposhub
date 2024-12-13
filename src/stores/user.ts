@@ -6,6 +6,12 @@ export const useUserStore = defineStore('user', () => {
     const storeCategory = ref<String>('collect')
     const storeChangeCategory = (value:String)=>{
         storeCategory.value = value;
+        storeChangeCategoryChildren('all')
+    }
+    // 子类别
+    const storeCategoryChildren = ref<String>('all')
+    const storeChangeCategoryChildren = (value:String)=>{
+        storeCategoryChildren.value = value
     }
     // 主题
     const dataTheme = ref('dark')
@@ -26,7 +32,7 @@ export const useUserStore = defineStore('user', () => {
         }
     }
 
-    return {storeChangeTheme, dataTheme, storeGetTheme,storeChangeCategory,storeCategory}
+    return {storeCategoryChildren,storeChangeTheme, dataTheme, storeGetTheme,storeChangeCategory,storeCategory,storeChangeCategoryChildren}
     }, {
     persist: {
         pick: ['dataTheme']

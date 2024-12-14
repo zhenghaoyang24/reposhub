@@ -66,7 +66,7 @@ watchEffect(() => {
 //repos布局
 .repos-content-box {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 20px;
   padding-top: 15px;
   margin-top: 15px;
@@ -77,7 +77,7 @@ watchEffect(() => {
 
 @media (max-width: @pad-width) {
   .repos-content-box {
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 15px;
   }
 }
@@ -85,7 +85,7 @@ watchEffect(() => {
 @media (max-width: @mobile-width) {
 
   .repos-content-box {
-    grid-template-columns: auto;
+    grid-template-columns: 1fr;
   }
 
 }

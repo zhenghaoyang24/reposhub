@@ -9,7 +9,7 @@ watch(() => store.storeCategory, (newVal, oldVal) => {
   if (newVal !== 'collect'){
     categoryChildren.value = categories.filter(category => category.type === store.storeCategory)[0].children
   }else{
-    console.log(1)
+    console.log('todo CategoryTabs.vue fetch collects')
   }
 },{
   immediate: true,

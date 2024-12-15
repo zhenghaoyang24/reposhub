@@ -1,10 +1,9 @@
 <script setup lang="js">
-import {inject,onMounted,onUnmounted} from 'vue'
-
+import {inject, onMounted, onUnmounted} from 'vue'
 const changeSearchStatue = inject('changeSearchStatueFn', () => {
   console.log("no function")
 })
-function changeSearchStatueBtn(){
+function changeSearchStatueBtn() {
   changeSearchStatue()
 }
 // 按下 / 搜索
@@ -17,7 +16,7 @@ const handleKeyDownSearch = (e) => {
 onMounted(() => {
   window.addEventListener('keydown', handleKeyDownSearch);
 });
-// 在组件卸载时移除全局键盘按下事件监听，避免内存泄漏
+// 在组件卸载时移除
 onUnmounted(() => {
   window.removeEventListener('keydown', handleKeyDownSearch);
 });

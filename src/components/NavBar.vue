@@ -1,18 +1,16 @@
 <script setup lang="ts">
-import ThemeChange from "@/components/ThemeChange.vue";
-import SearchInput from "@/components/SearchInput.vue";
-import GithubIcon from "@/components/icons/GithubIcon.vue";
-import router from "@/router";
 import {inject} from "vue";
-
+import ThemeChange from "@/components/ThemeChange.vue";
+import SearchInput from "@/components/SearchInputResult.vue";
+import GithubIcon from "@/components/icons/GithubIcon.vue";
+// 跳转仓库
 function toGithubRepoBtn() {
   window.open('https://github.com/zhenghaoyang24/reposhub', '_blank');
 }
-
+// 获取搜索框状态
 const searchStatue = inject('searchStatue', () => {
   console.log("no searchStatue")
 })
-
 </script>
 
 <template>

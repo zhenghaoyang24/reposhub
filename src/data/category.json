@@ -6,6 +6,9 @@
     "children":[
       {
         "type":"Site generator"
+      },
+      {
+        "type":"blog"
       }
     ]
   },

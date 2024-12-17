@@ -13,5 +13,20 @@
     "type": "application/mini-project",
     "author": "zhenghaoyang24",
     "reposName": "blueblue-words"
+  },
+  {
+    "type": "site/Site generator",
+    "author": "vuepress",
+    "reposName": "core"
+  },
+  {
+    "type": "site/Site generator",
+    "author": "vuejs",
+    "reposName": "vitepress"
+  },
+  {
+    "type": "site/blog",
+    "author": "pengzhanbo",
+    "reposName": "vuepress-theme-plume"
   }
 ]

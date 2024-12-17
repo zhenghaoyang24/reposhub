@@ -5,6 +5,7 @@ const store = useUserStore();
 import {ref, watch} from "vue";
 const categoryChildren = ref()
 
+// 
 watch(() => store.storeCategory, (newVal, oldVal) => {
   if (newVal !== 'collect'){
     categoryChildren.value = categories.filter(category => category.type === store.storeCategory)[0].children
@@ -26,7 +27,6 @@ const tabCategoryChildBtn = (value:String)=>{
           :style="store.storeCategoryChildren==='all'? 'border-bottom: 2px var(--p-blue) solid;color: var(--p-text-color);':''">all</span>
     <span @click="tabCategoryChildBtn(item.type)" v-for="item in categoryChildren"
           :style="(store.storeCategoryChildren===item.type)? 'border-bottom: 2px var(--p-blue) solid;color: var(--p-text-color);':''">{{item.type}}</span>
-
   </div>
 </template>
 

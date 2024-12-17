@@ -7,7 +7,6 @@ const store = useUserStore();
 const theCategoryBtn = (value: String) => {
   store.storeChangeCategory(value)
 }
-
 </script>
 
 <template>
@@ -16,7 +15,6 @@ const theCategoryBtn = (value: String) => {
     <CategoryItem category="collect" icon="lucide:star" @click="theCategoryBtn('collect')"></CategoryItem>
     <CategoryItem v-for="item in categories" :category="item.type" :icon="item.icon"
                   @click="theCategoryBtn(item.type)"></CategoryItem>
-
   </aside>
 </template>
 

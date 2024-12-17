@@ -50,7 +50,13 @@ const setLanguageColor = () => {
 const description = ref<String>('');
 const languageColor = ref<String>('');
 const language = ref<String>('no');
-const stargazers_count = ref<number>(0);
+const stargazers_count = ref<number>(0);  //原始star数据
+const star = computed(() => {  //将star 转换为 单位k
+  if (stargazers_count.value < 1000) {
+    return stargazers_count.value;
+  }
+  return (stargazers_count.value / 1000).toFixed(1) + "k";
+});
 const getReposInfo = () => {
   axios.get(`https://api.github.com/repos/${props.author}/${props.reposName}`).then((res) => {
     description.value = res.data.description
@@ -74,7 +80,7 @@ const getReposInfo = () => {
     <div class="repos-card-description">{{ description }}</div>
     <div class="repos-card-info">
       <span><span ref="languageColorRef" class="language-color"></span>{{ language }}{{ languageColor }}</span>
-      <span><StarIcon style="color: var(--s-text-color)"></StarIcon>&nbsp;{{ stargazers_count }}</span>
+      <span><StarIcon style="color: var(--s-text-color)"></StarIcon>&nbsp;{{ star }}</span>
     </div>
   </div>
 </template>

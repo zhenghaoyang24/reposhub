@@ -72,7 +72,7 @@ const getReposInfo = () => {
       description.value = res.data.description
       stargazers_count.value = res.data.stargazers_count
       language.value = res.data.language
-      store.pushReposStoreFn(
+      store.pushReposStoreFn(  //添加仓库信息
           props.author,
           props.reposName,
           description.value,
@@ -85,9 +85,6 @@ const getReposInfo = () => {
       console.log(err);
     })
   }
-
-
-
 }
 </script>
 
@@ -99,7 +96,7 @@ const getReposInfo = () => {
     </div>
     <div class="repos-card-description">{{ description }}</div>
     <div class="repos-card-info">
-      <span><span ref="languageColorRef" class="language-color"></span>{{ language }}{{ languageColor }}</span>
+      <span v-if="language"><span ref="languageColorRef" class="language-color"></span>{{ language }}{{ languageColor }}</span>
       <span><StarIcon style="color: var(--s-text-color)"></StarIcon>&nbsp;{{ star }}</span>
     </div>
   </div>

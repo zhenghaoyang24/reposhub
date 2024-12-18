@@ -3,6 +3,9 @@ import ReposIcon from "@/components/icons/ReposIcon.vue";
 import axios from "axios";
 import {computed, nextTick, onBeforeMount, onUnmounted, ref} from "vue";
 import StarIcon from "@/components/icons/StarIcon.vue";
+import {useReposStore} from "@/stores/repos.ts";
+
+const store = useReposStore()
 // language颜色
 const languageColors: { [key: string]: string }[] = [
   {'TypeScript': '#3178C6'},
@@ -47,9 +50,9 @@ const setLanguageColor = () => {
 /**
  * 获取当前repos信息
  */
-const description = ref<String>('');
-const languageColor = ref<String>('');
-const language = ref<String>('no');
+const description = ref<string>('');
+const languageColor = ref<string>('');
+const language = ref<string>('');
 const stargazers_count = ref<number>(0);  //原始star数据
 const star = computed(() => {  //将star 转换为 单位k
   if (stargazers_count.value < 1000) {
@@ -58,16 +61,33 @@ const star = computed(() => {  //将star 转换为 单位k
   return (stargazers_count.value / 1000).toFixed(1) + "k";
 });
 const getReposInfo = () => {
-  axios.get(`https://api.github.com/repos/${props.author}/${props.reposName}`).then((res) => {
-    description.value = res.data.description
-    stargazers_count.value = res.data.stargazers_count
-    language.value = res.data.language
-  }).then(() => {
-        setLanguageColor();
-      }
-  ).catch((err) => {
-    console.log(err);
-  })
+  console.log(store.reposArrayStore)
+  const theRepo = store.reposArrayStore.filter((item) => {
+    return item.author === props.author && item.reposName === props.reposName;
+  });
+  if (theRepo) {
+    console.log(theRepo)
+  }else{
+    axios.get(`https://api.github.com/repos/${props.author}/${props.reposName}`).then((res) => {
+      description.value = res.data.description
+      stargazers_count.value = res.data.stargazers_count
+      language.value = res.data.language
+      store.pushReposStoreFn(
+          props.author,
+          props.reposName,
+          description.value,
+          stargazers_count.value,
+          language.value)
+    }).then(() => {
+          setLanguageColor();
+        }
+    ).catch((err) => {
+      console.log(err);
+    })
+  }
+
+
+
 }
 </script>
 

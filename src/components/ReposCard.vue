@@ -4,19 +4,22 @@ import axios from "axios";
 import {computed, nextTick, onBeforeMount, onUnmounted, ref,toRaw} from "vue";
 import StarIcon from "@/components/icons/StarIcon.vue";
 import {useReposStore} from "@/stores/repos.ts";
-
+import languageColors from "@/data/languageColors.json";
+import languageCol1ors from "@/data/languageColors.ts";
 const store = useReposStore()
 // language颜色
-const languageColors: { [key: string]: string }[] = [
-  {'TypeScript': '#3178C6'},
-  {JavaScript: '#F1E05A'},
-  {Vue: '#41B883'},
-  {Python: '#3572A5'},
-  {HTML: '#E34C26'},
-  {CSS: '#663399'},
-  {'C++': '#F34B7D'},
-  {C: '#555555'}
-];
+// const languageColors: { [key: string]: string }[] = [
+//   {'TypeScript': '#3178C6'},
+//   {JavaScript: '#F1E05A'},
+//   {Vue: '#41B883'},
+//   {Python: '#3572A5'},
+//   {HTML: '#E34C26'},
+//   {CSS: '#663399'},
+//   {'C++': '#F34B7D'},
+//   {C: '#555555'},
+//   {'Java': '#b07219'},
+//   {'Dart': '#00B4AB'},
+// ];
 
 // 仓库名
 const props = defineProps({
@@ -37,15 +40,26 @@ onBeforeMount(async () => {
 })
 const languageColorRef = ref()
 const setLanguageColor = () => {
-  languageColors.forEach(item => {
-    for (const lang in item) {
-      if (lang === language.value) {
-        nextTick(() => {
-          languageColorRef.value.style.backgroundColor = item[lang];
-        })
-      }
-    }
-  });
+  for (const _language in languageColors) {
+        if (_language  === language.value) {
+          nextTick(() => {
+            languageColorRef.value.style.backgroundColor = languageColors[_language];
+          })
+        }
+  }
+  const _lang:string =  language.value
+  // console.log(languageColors[_lang]);
+  // languageColors.forEach(item => {
+  //   for (const lang in item) {
+  //     console.log(item)
+  //     if (lang  === language.value) {
+  //       const _lang:string =  lang
+  //       nextTick(() => {
+  //         languageColorRef.value.style.backgroundColor = item[_lang];
+  //       })
+  //     }
+  //   }
+  // });
 };
 // 赋值 仓库信息
 const setReposInfo = (_description:string,_language:string,_stargazers_count:number) => {
@@ -67,16 +81,15 @@ const star = computed(() => {  //将star 转换为 单位k
   return (stargazers_count.value / 1000).toFixed(1) + "k";
 });
 const getReposInfo = async () => {
-  console.log(`${props.author}/${props.reposName}`);
   const theRepo = store.reposArrayStore.find((item) => {
     return item.author === props.author && item.reposName === props.reposName;
   });
   if (theRepo) {
-    await setReposInfo(theRepo.description, theRepo.language, theRepo.stargazers_count);
+    setReposInfo(theRepo.description, theRepo.language, theRepo.stargazers_count);
     setLanguageColor();
   } else {
     axios.get(`https://api.github.com/repos/${props.author}/${props.reposName}`).then(async (res) => {
-      await setReposInfo(res.data.description, res.data.language, res.data.stargazers_count);
+      setReposInfo(res.data.description, res.data.language, res.data.stargazers_count);
       setLanguageColor();
       store.pushReposStoreFn(  //添加仓库信息
           props.author,

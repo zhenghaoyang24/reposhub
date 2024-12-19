@@ -1,4 +1,7 @@
 {
+  "allowTs":true,
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "noImplicitAny": false,
   "files": [],
   "references": [
     {

@@ -28,5 +28,15 @@
     "type": "site/blog",
     "author": "pengzhanbo",
     "reposName": "vuepress-theme-plume"
+  },
+  {
+    "type": "application/mobile",
+    "author": "persilee",
+    "reposName": "flutter_pro"
+  },
+  {
+    "type": "application/mobile",
+    "author": "xiezefan",
+    "reposName": "EasyIM-Server"
   }
 ]

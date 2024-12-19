@@ -49,7 +49,7 @@ watchEffect(() => {
       <CategoryCatalog></CategoryCatalog>
       <CategoryTabs></CategoryTabs>
       <div class="repos-content-box">
-        <ReposCard v-for="item in reposArr" :reposName="item.reposName" :author="item.author"></ReposCard>
+        <ReposCard v-for="item in reposArr" :reposName="item.reposName" :author="item.author" :key="`${item.author}/${item.reposName}`"></ReposCard>
       </div>
     </div>
   </main>

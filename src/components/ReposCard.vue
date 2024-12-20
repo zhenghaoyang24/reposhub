@@ -4,7 +4,7 @@ import axios from "axios";
 import {computed, nextTick, onBeforeMount, ref} from "vue";
 import StarIcon from "@/components/icons/StarIcon.vue";
 import {useReposStore} from "@/stores/repos.ts";
-import {LanguageColors} from "@/data/languageColors";  //导入语言颜色
+import {LanguageColors} from "@/data/LanguageColors"; //导入语言颜色
 
 const store = useReposStore()
 const props = defineProps({

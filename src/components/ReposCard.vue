@@ -1,27 +1,12 @@
 <script setup lang="ts">
 import ReposIcon from "@/components/icons/ReposIcon.vue";
 import axios from "axios";
-import {computed, nextTick, onBeforeMount, onUnmounted, ref,toRaw} from "vue";
+import {computed, nextTick, onBeforeMount, ref} from "vue";
 import StarIcon from "@/components/icons/StarIcon.vue";
 import {useReposStore} from "@/stores/repos.ts";
-import languageColors from "@/data/languageColors.json";
-import languageCol1ors from "@/data/languageColors.ts";
-const store = useReposStore()
-// language颜色
-// const languageColors: { [key: string]: string }[] = [
-//   {'TypeScript': '#3178C6'},
-//   {JavaScript: '#F1E05A'},
-//   {Vue: '#41B883'},
-//   {Python: '#3572A5'},
-//   {HTML: '#E34C26'},
-//   {CSS: '#663399'},
-//   {'C++': '#F34B7D'},
-//   {C: '#555555'},
-//   {'Java': '#b07219'},
-//   {'Dart': '#00B4AB'},
-// ];
+import {LanguageColors} from "@/data/languageColors";  //导入语言颜色
 
-// 仓库名
+const store = useReposStore()
 const props = defineProps({
   author: {
     type: String,
@@ -35,34 +20,23 @@ const props = defineProps({
 const toTheReposBtn = () => {
   window.open(`https://github.com/${props.author}/${props.reposName}`);
 }
-onBeforeMount(async () => {
+onBeforeMount(() => {
   getReposInfo();
 })
 const languageColorRef = ref()
 const setLanguageColor = () => {
-  for (const _language in languageColors) {
-        if (_language  === language.value) {
-          nextTick(() => {
-            languageColorRef.value.style.backgroundColor = languageColors[_language];
-          })
-        }
-  }
-  const _lang:string =  language.value
-  // console.log(languageColors[_lang]);
-  // languageColors.forEach(item => {
-  //   for (const lang in item) {
-  //     console.log(item)
-  //     if (lang  === language.value) {
-  //       const _lang:string =  lang
-  //       nextTick(() => {
-  //         languageColorRef.value.style.backgroundColor = item[_lang];
-  //       })
-  //     }
-  //   }
-  // });
+  LanguageColors.forEach(item => {
+    for (const lang in item) {
+      if (lang === language.value) {
+        nextTick(() => {
+          languageColorRef.value.style.backgroundColor = item[lang];
+        })
+      }
+    }
+  });
 };
 // 赋值 仓库信息
-const setReposInfo = (_description:string,_language:string,_stargazers_count:number) => {
+const setReposInfo = (_description: string, _language: string, _stargazers_count: number) => {
   description.value = _description
   stargazers_count.value = _stargazers_count
   language.value = _language

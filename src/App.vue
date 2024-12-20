@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import allRepos from '@/data/repos.json';
 import NavBar from "@/components/NavBar.vue";
-import {onBeforeMount, provide, ref, watchEffect} from "vue";
+import {onBeforeMount, onMounted, provide, ref, watchEffect} from "vue";
 import {useUserStore} from "@/stores/user.ts";
 import SearchResultBox from "@/components/SearchResultBox.vue";
 import AsideBar from "@/components/AsideBar.vue";

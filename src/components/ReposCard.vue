@@ -118,11 +118,10 @@ const getReposInfo = async () => {
     display: flex;
     align-items: center;
   }
-
 }
 
 .repos-card-description {
-
+  transition: color @transition-time;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;

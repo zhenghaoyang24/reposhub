@@ -5,11 +5,12 @@ const store = useUserStore();
 import {ref, watch} from "vue";
 const categoryChildren = ref()
 
-// 
+//
 watch(() => store.storeCategory, (newVal, oldVal) => {
   if (newVal !== 'collect'){
     categoryChildren.value = categories.filter(category => category.type === store.storeCategory)[0].children
   }else{
+    categoryChildren.value = 'all'
     console.log('todo CategoryTabs.vue fetch collects')
   }
 },{

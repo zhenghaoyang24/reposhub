@@ -63,23 +63,36 @@ const getReposInfo = async () => {
     setReposInfo(theRepo.description, theRepo.language, theRepo.stargazers_count);
     setLanguageColor();
   } else {
-    axios.get(`https://api.github.com/repos/${props.author}/${props.reposName}`).then(async (res) => {
-      setReposInfo(res.data.description, res.data.language, res.data.stargazers_count);
-      setLanguageColor();
-      store.pushReposStoreFn(  //添加仓库信息
-          props.author,
-          props.reposName,
-          description.value,
-          stargazers_count.value,
-          language.value)
-    }).catch((err) => {
-      console.log(err);
-    })
+    getTheRepoAxios()
   }
 }
+// 获取仓库信息 axios
+const getTheRepoAxios = ()=>{
+  axios.get(`https://api.github.com/repos/${props.author}/${props.reposName}`).then(async (res) => {
+    setReposInfo(res.data.description, res.data.language, res.data.stargazers_count);
+    setLanguageColor();
+    store.pushReposStoreFn(  //添加仓库信息
+        props.author,
+        props.reposName,
+        description.value,
+        stargazers_count.value,
+        language.value)
+  }).catch((err) => {
+    console.warn(err);
+  })
+}
 // 刷新
-const RefreshIcon = ref();
+const refreshRef = ref();
+const refreshBtn = () => {
+  refreshRef.value.classList.add('rotate');
+  getTheRepoAxios()
+  // 如果你希望旋转效果可以重复触发，并且每次点击都完整地执行旋转动画，
+  // 可以添加以下代码来移除并重新添加类名，触发过渡效果再次生效
+  setTimeout(() => {
+    refreshRef.value.classList.remove('rotate');
+  }, 1000);
 
+}
 </script>
 
 <template>
@@ -89,8 +102,8 @@ const RefreshIcon = ref();
         <ReposIcon style="color: var(--s-text-color)"></ReposIcon>
         <span @click="toTheReposBtn">{{ author }}/{{ reposName }}</span>
       </div>
-      <div class="repos-card-top-refresh" @click="refreshBtn">
-        <RefreshIcon ref="RefreshIcon"></RefreshIcon>
+      <div class="repos-card-top-refresh"  ref="refreshRef" @click="refreshBtn" title="Refresh the repository.">
+        <RefreshIcon ></RefreshIcon>
       </div>
 
     </div>
@@ -152,11 +165,12 @@ const RefreshIcon = ref();
   border: @border-1-solid;
   color: #fdfdfd;
 
-  .repos-card-top{
+  .repos-card-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    .repos-card-top-url{
+
+    .repos-card-top-url {
       display: flex;
       align-items: center;
       color: var(--s-text-color);
@@ -172,16 +186,35 @@ const RefreshIcon = ref();
         }
       }
     }
-    .repos-card-top-refresh{
+
+    .repos-card-top-refresh {
+      display: flex;
       cursor: pointer;
       color: var(--s-text-color);
       transition: color @transition-time;
-      &:hover{
+      &:hover {
         color: var(--p-text-color);
+      }
+      >svg{
+        width: 15px;
+        height: 15px;
       }
     }
   }
 
 
+}
+.rotate{
+  animation: rotate 1s ease;
+}
+
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to  {
+    transform: rotate(720deg);
+  }
 }
 </style>

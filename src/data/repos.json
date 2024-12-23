@@ -38,5 +38,35 @@
     "type": "application/mobile",
     "author": "xiezefan",
     "reposName": "EasyIM-Server"
+  },
+  {
+    "type": "application/web",
+    "author": "sunshang-hl",
+    "reposName": "CityWalk"
+  },
+  {
+    "type": "application/mini-project",
+    "author": "iamxjb",
+    "reposName": "winxin-app-watch-life.net"
+  },
+  {
+    "type": "site/blog",
+    "author": "vuepress-theme-hope",
+    "reposName": "vuepress-theme-hope"
+  },
+  {
+    "type": "site/blog",
+    "author": "vuepress-reco",
+    "reposName": "vuepress-theme-reco"
+  },
+  {
+    "type": "tools/life",
+    "author": "Momo707577045",
+    "reposName": "m3u8-downloader"
+  },
+  {
+    "type": "tools/life",
+    "author": "EstrellaXD",
+    "reposName": "Auto_Bangumi"
   }
 ]

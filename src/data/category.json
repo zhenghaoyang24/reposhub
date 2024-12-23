@@ -1,35 +1,27 @@
 [
   {
     "type": "site",
-    "type_description": "A conventional storage space used for storing general goods.",
-    "icon":"mdi:tools",
+    "icon":"dashicons:admin-site-alt3",
     "children":[
-      {
-        "type":"Site generator"
-      },
-      {
-        "type":"blog"
-      }
+      {"type":"Site generator"},
+      {"type":"blog"}
+    ]
+  },
+  {
+    "type": "application",
+    "icon":"eos-icons:application",
+    "children":[
+      { "type":"web"},
+      { "type":"mobile"},
+      { "type":"mini-project"}
     ]
   },
   {
     "type": "tools",
-    "type_description": "A conventional storage space used for storing general goods.",
-    "icon":"dashicons:admin-site"
-  },
-  {
-    "type": "plugging",
-    "type_description": "A conventional storage space used for storing general goods.",
-    "icon":"icon-park-outline:plug"
-  },
-  {
-    "type": "application",
-    "type_description": "A conventional storage space used for storing general goods.",
-    "icon":"eos-icons:application",
+    "icon":"mdi:tools",
     "children":[
-      { "type":"web", "type_description": "A conventional storage space used for storing general goods."},
-      { "type":"mobile", "type_description": "A conventional storage space used for storing general goods."},
-      { "type":"mini-project", "type_description": "A conventional storage space used for storing general goods."}
+      {"type":"life"},
+      {"type":"develop"}
     ]
   }
 ]

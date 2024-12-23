@@ -1,5 +1,7 @@
 # reposhub
 
-This is a collection of repository categories, you can find the items you need by category, and you can also add any of your own projects so that others can discover them faster.
+这是一个开源仓库集合，您可以按类别找到所需的项目，您还可以添加自己的任何项目到类别中，以便其他人更快地发现它们。
+添加类别在
+# 项目正在开发中
+预开发功能：搜索，仓库收藏。
 
-The project is in development.

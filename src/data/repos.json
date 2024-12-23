@@ -68,5 +68,10 @@
     "type": "tools/life",
     "author": "EstrellaXD",
     "reposName": "Auto_Bangumi"
+  },
+  {
+    "type": "tools/develop",
+    "author": "pengzhanbo",
+    "reposName": "vite-plugin-mock-dev-server"
   }
 ]

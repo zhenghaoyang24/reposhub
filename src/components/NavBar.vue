@@ -62,6 +62,9 @@ const searchStatue = inject('searchStatue', () => {
   .justify-space-between();
   padding: @nav-padding;
   border-bottom: 1px solid var(--border-color);
+  @media (max-width: @mobile-width) {
+    padding: @nav-padding - 9px;
+  }
 }
 
 </style>

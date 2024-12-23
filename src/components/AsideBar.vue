@@ -29,14 +29,19 @@ const theCategoryBtn = (value: String) => {
     transition: color @transition-time;
     font-weight: normal;
     color: var(--p-text-color);
+    @media (max-width: @mobile-width) {
+      font-size: 11px;
+    }
   }
-
   padding: 5px;
   width: @left-aside-width;
   overflow-y: auto; /* 当内容超出时出现垂直滚动条 */
   height: calc(100vh - @nav-height);
   background: none;
   box-sizing: border-box;
+  @media (max-width: @mobile-width) {
+    width: @left-aside-width - 190px;
+  }
 
   &::-webkit-scrollbar {
     width: 10px;

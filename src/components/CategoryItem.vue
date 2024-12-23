@@ -43,6 +43,9 @@ const props = defineProps({
     transition: color @transition-time;
     color: var(--p-text-color);
     padding-left: 10px;
+    @media (max-width: @mobile-width) {
+      display: none;
+    }
   }
 }
 .hover-bg-color{

@@ -4,7 +4,8 @@ import axios from "axios";
 import {computed, nextTick, onBeforeMount, ref} from "vue";
 import StarIcon from "@/components/icons/StarIcon.vue";
 import {useReposStore} from "@/stores/repos.ts";
-import {LanguageColors} from "@/data/LanguageColors"; //导入语言颜色
+import {LanguageColors} from "@/data/LanguageColors";
+import RefreshIcon from "@/components/icons/RefreshIcon.vue"; //导入语言颜色
 
 const store = useReposStore()
 const props = defineProps({
@@ -76,13 +77,22 @@ const getReposInfo = async () => {
     })
   }
 }
+// 刷新
+const RefreshIcon = ref();
+
 </script>
 
 <template>
   <div class="repos-card-box">
-    <div class="repos-card-url">
-      <ReposIcon style="color: var(--s-text-color)"></ReposIcon>
-      <span @click="toTheReposBtn">{{ author }}/{{ reposName }}</span>
+    <div class="repos-card-top">
+      <div class="repos-card-top-url">
+        <ReposIcon style="color: var(--s-text-color)"></ReposIcon>
+        <span @click="toTheReposBtn">{{ author }}/{{ reposName }}</span>
+      </div>
+      <div class="repos-card-top-refresh" @click="refreshBtn">
+        <RefreshIcon ref="RefreshIcon"></RefreshIcon>
+      </div>
+
     </div>
     <div class="repos-card-description">{{ description }}</div>
     <div class="repos-card-info">
@@ -142,21 +152,36 @@ const getReposInfo = async () => {
   border: @border-1-solid;
   color: #fdfdfd;
 
-  .repos-card-url {
+  .repos-card-top{
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    color: var(--s-text-color);
-    font-size: 14px;
+    .repos-card-top-url{
+      display: flex;
+      align-items: center;
+      color: var(--s-text-color);
+      font-size: 14px;
 
-    > span {
+      > span {
+        cursor: pointer;
+        padding-left: 5px;
+        color: var(--p-blue);
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    .repos-card-top-refresh{
       cursor: pointer;
-      padding-left: 5px;
-      color: var(--p-blue);
-
-      &:hover {
-        text-decoration: underline;
+      color: var(--s-text-color);
+      transition: color @transition-time;
+      &:hover{
+        color: var(--p-text-color);
       }
     }
   }
+
+
 }
 </style>

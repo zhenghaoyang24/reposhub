@@ -38,6 +38,7 @@ const tabCategoryChildBtn = (value:String)=>{
   margin-top: 10px;
   color: var(--s-text-color);
   display: flex;
+
   >span{
     transition: all @transition-time;
     border-bottom: 2px var(--p-color) solid;
@@ -47,6 +48,10 @@ const tabCategoryChildBtn = (value:String)=>{
     color: var(--s-text-color);
     &:hover{
       color: var(--p-text-color);
+    }
+    @media (max-width: @mobile-width) {
+      margin-right: 3px;
+      padding: 6px 6px;
     }
   }
 }

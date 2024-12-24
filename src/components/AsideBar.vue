@@ -2,6 +2,7 @@
 import categories from "@/data/category.json"
 import CategoryItem from "@/components/CategoryItem.vue";
 import {useUserStore} from "@/stores/user.ts";
+import NewBtn from "@/components/NewBtn.vue";
 
 const store = useUserStore();
 const theCategoryBtn = (value: String) => {
@@ -39,8 +40,13 @@ const theCategoryBtn = (value: String) => {
   height: calc(100vh - @nav-height);
   background: none;
   box-sizing: border-box;
+
+  @media (max-width: @pad-width) {
+    width: calc(@left-aside-width - 90px);
+  }
   @media (max-width: @mobile-width) {
     width: @left-aside-width - 190px;
+    min-width: fit-content;
   }
 
   &::-webkit-scrollbar {

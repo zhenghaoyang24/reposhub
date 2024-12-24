@@ -36,6 +36,7 @@ const props = defineProps({
   margin-left: 5px;
   padding: 8px;
   flex: 1;
+
   .hover-bg-color();
   display: inline-flex;
   align-items: center;

@@ -3,6 +3,7 @@ import {inject} from "vue";
 import ThemeChange from "@/components/ThemeChange.vue";
 import SearchInput from "@/components/SearchInputResult.vue";
 import GithubIcon from "@/components/icons/GithubIcon.vue";
+import NewBtn from "@/components/NewBtn.vue";
 // 跳转仓库
 function toGithubRepoBtn() {
   window.open('https://github.com/zhenghaoyang24/reposhub', '_blank');

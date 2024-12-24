@@ -97,18 +97,24 @@ const refreshBtn = () => {
 
 }
 // 添加喜欢
+const reposLike = ref()
 onMounted(() => {
-  nextTick(() => {
-    const reposCardLike = document.getElementById(`zhenghaoyang24/you-todo`)
-    console.log(reposCardLike)
-  })
+  console.log(userStore.likeReposArrayStore)
+  console.log(userStore.likeReposArrayStore.find(item => item.author === props.author && item.reposName === props.reposName))
+  // console.log(reposLike)
+  if (userStore.likeReposArrayStore.find(item => item.author === props.author && item.reposName === props.reposName)) {
+    reposLike.value.style.fill = 'f44336'
+    console.log('删除')
+  } else {
+    console.log('添加')
 
+    reposLike.value.style.fill = 'var(--s-text-color)'
+  }
 })
 import {useUserStore} from "@/stores/user.ts";
-
 const userStore = useUserStore()
 const addLikeBnt = (e: any) => {
-  if (userStore.likeReposArrayStore.find(item => item.author === props.author && item.reposName === props.reposName)) {
+  if (userStore.likeReposArrayStore.find(item => (item.author === props.author) && (item.reposName === props.reposName))) {
     e.target.style.fill = 'var(--s-text-color)'
     console.log('删除')
   } else {
@@ -142,7 +148,7 @@ const addLikeBnt = (e: any) => {
           }}</span>
         <span><StarIcon style="color: var(--s-text-color)"></StarIcon>&nbsp;{{ star }}</span>
       </div>
-      <div class="repos-card-like" @click="addLikeBnt" :id="`${author}/${reposName}`">
+      <div class="repos-card-like" @click="addLikeBnt" ref="reposLike">
         <LikeIcon></LikeIcon>
       </div>
     </div>

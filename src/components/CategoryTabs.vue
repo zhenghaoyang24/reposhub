@@ -7,11 +7,10 @@ const categoryChildren = ref()
 
 //
 watch(() => store.storeCategory, (newVal, oldVal) => {
-  if (newVal !== 'collect'){
+  if (newVal !== 'like'){
     categoryChildren.value = categories.filter(category => category.type === store.storeCategory)[0].children
   }else{
     categoryChildren.value = 'all'
-    console.log('todo CategoryTabs.vue fetch collects')
   }
 },{
   immediate: true,

@@ -101,9 +101,7 @@ const reposLike = ref()
 onMounted(() => {
   if (userStore.likeReposArrayStore.find(item => (item.author === props.author) && (item.reposName === props.reposName))) {
     reposLike.value.querySelector('svg').querySelector('path').style.fill = 'f44336'
-    console.log('删除')
   } else {
-    console.log('添加')
     reposLike.value.querySelector('svg').querySelector('path').style.fill = 'var(--s-text-color)'
   }
 })

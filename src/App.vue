@@ -9,7 +9,6 @@ import CategoryCatalog from "@/components/CategoryCatalog.vue";
 import CategoryTabs from "@/components/CategoryTabs.vue";
 import ReposCard from "@/components/ReposCard.vue";
 
-
 // 获取主题指
 const userStore = useUserStore();
 onBeforeMount(() => {
@@ -28,15 +27,20 @@ const reposArr = ref()
 watchEffect(() => {
   const theCategory = userStore.storeCategory
   const theCategoryChild = userStore.storeCategoryChildren
-  reposArr.value = allRepos.filter(item => {
-    const typeParts = item.type.split('/');
-    if (userStore.storeCategoryChildren === 'all') {
-      return typeParts[0] === theCategory;
-    } else {
-      return typeParts[0] === theCategory && typeParts[1] === theCategoryChild;
-    }
+  if (theCategory === 'like'){
+    reposArr.value = userStore.likeReposArrayStore
+  }else{
+    reposArr.value = allRepos.filter(item => {
+      const typeParts = item.type.split('/');
+      if (userStore.storeCategoryChildren === 'all') {
+        return typeParts[0] === theCategory;
+      } else {
+        return typeParts[0] === theCategory && typeParts[1] === theCategoryChild;
+      }
 
-  })
+    })
+  }
+
 })
 </script>
 

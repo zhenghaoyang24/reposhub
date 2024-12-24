@@ -8,7 +8,7 @@ interface LikeRepos {
 
 export const useUserStore = defineStore('user', () => {
         // 类别
-        const storeCategory = ref<String>('collect')
+        const storeCategory = ref<String>('like')
         const storeChangeCategory = (value: String) => {
             storeCategory.value = value;
             storeChangeCategoryChildren('all')
@@ -36,8 +36,8 @@ export const useUserStore = defineStore('user', () => {
                 window.document.documentElement.setAttribute('theme', 'light')
             }
         }
+        // 喜欢的仓库
         const likeReposArrayStore = ref<LikeRepos[]>([])
-
         const addLikeReposStoreFn = (author: string, reposName: string) => {
             const repos: LikeRepos =
                 {
@@ -49,7 +49,7 @@ export const useUserStore = defineStore('user', () => {
             return likeReposArrayStore.value.push(repos)
         }
     const removeLikeReposStoreFn = (author: string, reposName: string) => {
-        return likeReposArrayStore.value
+        likeReposArrayStore.value = likeReposArrayStore.value.filter(item => (item.author !== author) || (item.reposName !== reposName))
     }
 
         return {

@@ -99,28 +99,23 @@ const refreshBtn = () => {
 // 添加喜欢
 const reposLike = ref()
 onMounted(() => {
-  console.log(userStore.likeReposArrayStore)
-  console.log(userStore.likeReposArrayStore.find(item => item.author === props.author && item.reposName === props.reposName))
-  // console.log(reposLike)
-  if (userStore.likeReposArrayStore.find(item => item.author === props.author && item.reposName === props.reposName)) {
-    reposLike.value.style.fill = 'f44336'
+  if (userStore.likeReposArrayStore.find(item => (item.author === props.author) && (item.reposName === props.reposName))) {
+    reposLike.value.querySelector('svg').querySelector('path').style.fill = 'f44336'
     console.log('删除')
   } else {
     console.log('添加')
-
-    reposLike.value.style.fill = 'var(--s-text-color)'
+    reposLike.value.querySelector('svg').querySelector('path').style.fill = 'var(--s-text-color)'
   }
 })
 import {useUserStore} from "@/stores/user.ts";
 const userStore = useUserStore()
 const addLikeBnt = (e: any) => {
   if (userStore.likeReposArrayStore.find(item => (item.author === props.author) && (item.reposName === props.reposName))) {
-    e.target.style.fill = 'var(--s-text-color)'
-    console.log('删除')
+    userStore.removeLikeReposStoreFn(props.author, props.reposName);
+    reposLike.value.querySelector('svg').querySelector('path').style.fill = 'var(--s-text-color)'
   } else {
-    console.log('添加')
     userStore.addLikeReposStoreFn(props.author, props.reposName);
-    e.target.style.fill = 'f44336'
+    reposLike.value.querySelector('svg').querySelector('path').style.fill = '#f44336'
   }
 
 }

@@ -13,7 +13,7 @@ const theCategoryBtn = (value: String) => {
 <template>
   <aside class="left-aside-box">
     <h4>Category</h4>
-    <CategoryItem category="collect" icon="icon-park-outline:like" @click="theCategoryBtn('collect')"></CategoryItem>
+    <CategoryItem category="collect" icon="icon-park-outline:like" @click="theCategoryBtn('like')"></CategoryItem>
     <CategoryItem v-for="item in categories" :category="item.type" :icon="item.icon"
                   @click="theCategoryBtn(item.type)"></CategoryItem>
   </aside>

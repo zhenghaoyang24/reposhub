@@ -21,7 +21,8 @@
     "icon":"mdi:tools",
     "children":[
       {"type":"life"},
-      {"type":"develop"}
+      {"type":"develop"},
+      {"type":"readme"}
     ]
   }
 ]

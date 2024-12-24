@@ -16,11 +16,6 @@
   },
   {
     "type": "site/Site generator",
-    "author": "vuepress",
-    "reposName": "core"
-  },
-  {
-    "type": "site/Site generator",
     "author": "vuejs",
     "reposName": "vitepress"
   },
@@ -73,5 +68,20 @@
     "type": "tools/develop",
     "author": "pengzhanbo",
     "reposName": "vite-plugin-mock-dev-server"
+  },
+  {
+    "type": "application/web",
+    "author": "wanglin2",
+    "reposName": "mind-map"
+  },
+  {
+    "type": "tools/readme",
+    "author": "DenverCoder1",
+    "reposName": "readme-typing-svg"
+  },
+  {
+    "type": "tools/readme",
+    "author": "tandpfun",
+    "reposName": "skill-icons"
   }
 ]

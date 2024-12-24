@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import ReposIcon from "@/components/icons/ReposIcon.vue";
 import axios from "axios";
-import {computed, nextTick, onBeforeMount, ref} from "vue";
+import {computed, nextTick, onBeforeMount, onMounted, ref} from "vue";
 import StarIcon from "@/components/icons/StarIcon.vue";
 import {useReposStore} from "@/stores/repos.ts";
-import {LanguageColors} from "@/data/LanguageColors";
-import RefreshIcon from "@/components/icons/RefreshIcon.vue"; //导入语言颜色
 
 const store = useReposStore()
+import {LanguageColors} from "@/data/LanguageColors";
+import RefreshIcon from "@/components/icons/RefreshIcon.vue";
+import LikeIcon from "@/components/icons/LikeIcon.vue"; //导入语言颜色
+
+
 const props = defineProps({
   author: {
     type: String,
@@ -67,7 +70,7 @@ const getReposInfo = async () => {
   }
 }
 // 获取仓库信息 axios
-const getTheRepoAxios = ()=>{
+const getTheRepoAxios = () => {
   axios.get(`https://api.github.com/repos/${props.author}/${props.reposName}`).then(async (res) => {
     setReposInfo(res.data.description, res.data.language, res.data.stargazers_count);
     setLanguageColor();
@@ -93,6 +96,29 @@ const refreshBtn = () => {
   }, 1000);
 
 }
+// 添加喜欢
+onMounted(() => {
+  nextTick(() => {
+    const reposCardLike = document.getElementById(`zhenghaoyang24/you-todo`)
+    console.log(reposCardLike)
+  })
+
+})
+import {useUserStore} from "@/stores/user.ts";
+
+const userStore = useUserStore()
+const addLikeBnt = (e: any) => {
+  if (userStore.likeReposArrayStore.find(item => item.author === props.author && item.reposName === props.reposName)) {
+    e.target.style.fill = 'var(--s-text-color)'
+    console.log('删除')
+  } else {
+    console.log('添加')
+    userStore.addLikeReposStoreFn(props.author, props.reposName);
+    e.target.style.fill = 'f44336'
+  }
+
+}
+
 </script>
 
 <template>
@@ -102,21 +128,46 @@ const refreshBtn = () => {
         <ReposIcon style="color: var(--s-text-color)"></ReposIcon>
         <span @click="toTheReposBtn">{{ author }}/{{ reposName }}</span>
       </div>
-      <div class="repos-card-top-refresh"  ref="refreshRef" @click="refreshBtn" title="Refresh the repository.">
-        <RefreshIcon ></RefreshIcon>
+      <div class="repos-card-top-refresh" ref="refreshRef" @click="refreshBtn" title="Refresh the repository.">
+        <RefreshIcon></RefreshIcon>
       </div>
 
     </div>
     <div class="repos-card-description">{{ description }}</div>
-    <div class="repos-card-info">
-      <span v-if="language"><span ref="languageColorRef" class="language-color"></span>{{ language }}{{ languageColor }}</span>
-      <span><StarIcon style="color: var(--s-text-color)"></StarIcon>&nbsp;{{ star }}</span>
+
+    <div class="repos-card-bottom">
+      <div class="repos-card-info">
+        <span v-if="language"><span ref="languageColorRef" class="language-color"></span>{{ language }}{{
+            languageColor
+          }}</span>
+        <span><StarIcon style="color: var(--s-text-color)"></StarIcon>&nbsp;{{ star }}</span>
+      </div>
+      <div class="repos-card-like" @click="addLikeBnt" :id="`${author}/${reposName}`">
+        <LikeIcon></LikeIcon>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped lang="less">
 @import "@/assets/base.less";
+
+.repos-card-like {
+  display: flex;
+  cursor: pointer;
+
+  > svg {
+    transition: @transition-time;
+    width: 15px;
+    height: 15px;
+  }
+}
+
+.repos-card-bottom {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+}
 
 .language-color {
   margin-right: 5px;
@@ -127,7 +178,7 @@ const refreshBtn = () => {
 
 .repos-card-info {
   display: flex;
-  margin-top: auto;
+
   color: var(--s-text-color);
   font-size: 12px;
 
@@ -192,10 +243,12 @@ const refreshBtn = () => {
       cursor: pointer;
       color: var(--s-text-color);
       transition: color @transition-time;
+
       &:hover {
         color: var(--p-text-color);
       }
-      >svg{
+
+      > svg {
         width: 15px;
         height: 15px;
       }
@@ -204,7 +257,8 @@ const refreshBtn = () => {
 
 
 }
-.rotate{
+
+.rotate {
   animation: rotate 1s ease;
 }
 
@@ -213,7 +267,7 @@ const refreshBtn = () => {
   from {
     transform: rotate(0deg);
   }
-  to  {
+  to {
     transform: rotate(720deg);
   }
 }

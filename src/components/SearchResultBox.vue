@@ -43,19 +43,7 @@ onUnmounted(() => {
 
 // 搜索model
 const searchInputModelBtn = (v:string)=>{
-  inputValue.value = 'author:' + inputValue.value;
-  // 设置输入框中已存在文字（即author:部分）的颜色为蓝色
-  if (searchInput.value) {
-    const textNodes = searchInput.value.childNodes;
-    for (let i = 0; i < textNodes.length; i++) {
-      if (textNodes[i].nodeType === Node.TEXT_NODE) {
-        const span = document.createElement('span');
-        span.style.color = 'blue';
-        span.textContent = textNodes[i].textContent;
-        textNodes[i].parentNode?.replaceChild(span, textNodes[i]);
-      }
-    }
-  }
+
 }
 // 在组件挂载后，添加input输入事件监听器，用于控制后续输入文字的颜色为白色
 onMounted(() => {
@@ -97,7 +85,7 @@ onMounted(() => {
     padding: 3px;
     border-radius: 3px;
     background-color: var(--p-blue);
-    color: #c6c6c6;
+    color: #efefef;
     cursor: pointer;
   }
 

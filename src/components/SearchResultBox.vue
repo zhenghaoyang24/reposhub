@@ -41,7 +41,30 @@ onUnmounted(() => {
   window.removeEventListener('keydown', handleKeyDownSearch);
 });
 
-
+// 搜索model
+const searchInputModelBtn = (v:string)=>{
+  inputValue.value = 'author:' + inputValue.value;
+  // 设置输入框中已存在文字（即author:部分）的颜色为蓝色
+  if (searchInput.value) {
+    const textNodes = searchInput.value.childNodes;
+    for (let i = 0; i < textNodes.length; i++) {
+      if (textNodes[i].nodeType === Node.TEXT_NODE) {
+        const span = document.createElement('span');
+        span.style.color = 'blue';
+        span.textContent = textNodes[i].textContent;
+        textNodes[i].parentNode?.replaceChild(span, textNodes[i]);
+      }
+    }
+  }
+}
+// 在组件挂载后，添加input输入事件监听器，用于控制后续输入文字的颜色为白色
+onMounted(() => {
+  if (searchInput.value) {
+    searchInput.value.addEventListener('input', () => {
+      searchInput.value = 'white';
+    });
+  }
+});
 </script>
 
 <template>
@@ -51,17 +74,36 @@ onUnmounted(() => {
         <span class="search-input-icon-base">
           <SearchIcon></SearchIcon>
         </span>
-        <input  ref="searchInput" type="text" placeholder="type 'Esc' to exit the search" class="search-input" v-model="inputValue">
+        <input  ref="searchInput" type="text" placeholder="type 'Esc' to exit the search" class="search-input"
+                v-model="inputValue">
         <span v-show="inputValue.length>0" class="search-input-icon-base" @click="clearInputValueBtn">
           <ClearIcon></ClearIcon>
         </span>
       </div>
+      <div class="search-value-model">
+        <span @click="searchInputModelBtn('author:')">author:</span>
+      </div>
+
     </div>
   </div>
 </template>
 
 <style scoped lang="less">
 @import "@/assets/base.less";
+.search-value-model{
+  margin-top: 10px;
+
+  >span{
+    padding: 3px;
+    border-radius: 3px;
+    background-color: var(--p-blue);
+    color: #c6c6c6;
+    cursor: pointer;
+  }
+
+}
+
+
 .search-input-box {
   .flex-center();
   width: 100%;

@@ -96,7 +96,9 @@ const refreshBtn = () => {
   }, 1000);
 
 }
-// 添加喜欢
+/**
+ * 添加喜欢
+ */
 const reposLike = ref()
 onMounted(() => {
   if (userStore.likeReposArrayStore.find(item => (item.author === props.author) && (item.reposName === props.reposName))) {

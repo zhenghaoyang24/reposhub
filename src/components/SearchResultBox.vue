@@ -23,7 +23,6 @@ function clearInputValueBtn() {  //清空input值
 // 获取focus  绑定input
 const searchInput = ref<any>(null)
 onMounted(() => {
-  reposArr.value = allRepos
 // 在组件挂载完成后，判断inputRef是否已经关联到真实的DOM元素
   if (searchInput.value) {
     // 使用DOM原生方法让input元素获取焦点
@@ -62,7 +61,6 @@ const author = ref()
 const repos = ref()
 const reposArr = ref()
 watch(inputValue, (newValue) => {
-
   author.value = ''
   repos.value = ''
   const parts = newValue.split(';');
@@ -80,9 +78,12 @@ watch(inputValue, (newValue) => {
       return item.reposName.includes(repos.value) && item.author.includes(author.value)
     })
   }
-
-
 }, {immediate: true})
+
+const toTheReposBtn = (author:string,repos:string) => {
+  window.open(`https://github.com/${author}/${repos}`);
+}
+
 </script>
 
 <template>
@@ -104,7 +105,7 @@ watch(inputValue, (newValue) => {
         <span @click="searchInputModelBtn('repos:')">repos:</span>
       </div>
       <div class="search-repos-box">
-        <div class="search-repos-item" v-for="item in reposArr">
+        <div class="search-repos-item" v-for="item in reposArr" @click="toTheReposBtn(item.author,item.reposName)">
           <span>
             <ReposIcon style="color: var(--s-text-color)"></ReposIcon>
             <span>{{ item.author }}/{{ item.reposName }}</span>
@@ -124,7 +125,7 @@ watch(inputValue, (newValue) => {
 .search-repos-box {
   margin-top: 10px;
   overflow-y: scroll;
-  flex: 1;
+  max-height: 100%;
   .search-repos-item {
     display: flex;
     align-items: center;
@@ -161,9 +162,7 @@ watch(inputValue, (newValue) => {
     width: 10px;
     background-color: #2c2c2c;
   }
-
   /* 暗色模式下的滚动条滑块样式 */
-
   &::-webkit-scrollbar-thumb {
     background-color: #9e9e9e;
     border-radius: 5px;
@@ -233,7 +232,8 @@ watch(inputValue, (newValue) => {
     margin-top: 2px;
     border: @border-1-solid;
     width: 50%;
-    height: 70%;
+    height: fit-content;
+    max-height: 70%;
     border-radius: 13px;
     background-color: var(--p-color);
     box-shadow: var(--shadow-floating);

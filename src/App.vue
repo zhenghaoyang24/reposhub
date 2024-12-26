@@ -27,9 +27,9 @@ const reposArr = ref()
 watchEffect(() => {
   const theCategory = userStore.storeCategory
   const theCategoryChild = userStore.storeCategoryChildren
-  if (theCategory === 'like'){
+  if (theCategory === 'like') {
     reposArr.value = userStore.likeReposArrayStore
-  }else{
+  } else {
     reposArr.value = allRepos.filter(item => {
       const typeParts = item.type.split('/');
       if (userStore.storeCategoryChildren === 'all') {
@@ -62,16 +62,12 @@ watchEffect(() => {
 
 <style scoped lang="less">
 @import "@/assets/base.less";
-@import "@/assets/common-styles-less.less";
 .content-main {
   padding: 10px;
   flex: 1;
-
 }
-
 //repos布局
 .repos-content-box {
-
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 20px;
@@ -80,25 +76,10 @@ watchEffect(() => {
   border-top: @border-1-solid;
   transition: border-top-color @transition-time;
   color: #fdfdfd;
-
-
   box-sizing: border-box;
   max-height: calc(100vh - 175px);
   overflow-y: auto; /* 当内容超出时出现垂直滚动条 */
-
-  &::-webkit-scrollbar {
-    width: 10px;
-    background-color: #2c2c2c;
-  }
-  /* 暗色模式下的滚动条滑块样式 */
-  &::-webkit-scrollbar-thumb {
-    background-color: #9e9e9e;
-    border-radius: 5px;
-
-    &:hover {
-      background-color: #c6c6c6;
-    }
-  }
+  .scrollbar(10px, 10px, var(--scrollbar-bg-color), var(--scrollbar-thumb-bg-color), var(--scrollbar-thumb-bg-color-hover), 4px);
 }
 
 @media (max-width: @pad-width) {

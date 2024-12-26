@@ -16,7 +16,8 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       less: {
-        javascriptEnabled: true,
+        additionalData:"@import '@hoeyzheng/common-style-less';",
+        // javascriptEnabled: true,
       },
     },
   },

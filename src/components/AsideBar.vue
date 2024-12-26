@@ -48,21 +48,21 @@ const theCategoryBtn = (value: String) => {
     width: @left-aside-width - 190px;
     min-width: fit-content;
   }
-
-  &::-webkit-scrollbar {
-    width: 10px;
-    background-color: #2c2c2c;
-  }
-
-  /* 暗色模式下的滚动条滑块样式 */
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #9e9e9e;
-    border-radius: 5px;
-
-    &:hover {
-      background-color: #c6c6c6;
-    }
-  }
+  .scrollbar(10px, 10px, var(--scrollbar-bg-color), var(--scrollbar-thumb-bg-color), var(--scrollbar-thumb-bg-color-hover), 4px);
+  //&::-webkit-scrollbar {
+  //  width: 10px;
+  //  background-color: #2c2c2c;
+  //}
+  //
+  ///* 暗色模式下的滚动条滑块样式 */
+  //
+  //&::-webkit-scrollbar-thumb {
+  //  background-color: #9e9e9e;
+  //  border-radius: 5px;
+  //
+  //  &:hover {
+  //    background-color: #c6c6c6;
+  //  }
+  //}
 }
 </style>

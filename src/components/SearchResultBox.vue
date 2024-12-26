@@ -85,7 +85,6 @@ const toTheReposBtn = (author:string,repos:string) => {
 }
 
 </script>
-
 <template>
   <div class="search-body" @click.self="changeSearchStatueBtn">
     <div class="search-box">
@@ -111,10 +110,8 @@ const toTheReposBtn = (author:string,repos:string) => {
             <span>{{ item.author }}/{{ item.reposName }}</span>
           </span>
           <span>Jump to</span>
-
         </div>
       </div>
-
     </div>
   </div>
 </template>

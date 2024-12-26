@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@iconify/json": "^2.2.282",
+    "@hoeyzheng/common-style-less": "^1.0.1",
     "axios": "^1.7.9",
     "less": "^4.2.1",
     "pinia": "^2.2.6",

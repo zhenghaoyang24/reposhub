@@ -83,5 +83,30 @@
     "type": "tools/readme",
     "author": "tandpfun",
     "reposName": "skill-icons"
+  },
+  {
+    "type": "tools/life",
+    "author": "MarSeventh",
+    "reposName": "CloudFlare-ImgBed"
+  },
+  {
+    "type": "documents/learning",
+    "author": "krahets",
+    "reposName": "hello-algo"
+  },
+  {
+    "type": "documents/resources",
+    "author": "zhenghaoyang24",
+    "reposName": "english-vocabulary"
+  },
+  {
+    "type": "documents/resources",
+    "author": "KyleBing",
+    "reposName": "english-vocabulary"
+  },
+  {
+    "type": "documents/learning",
+    "author": "wangzheng0822",
+    "reposName": "algo"
   }
 ]

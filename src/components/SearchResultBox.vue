@@ -119,6 +119,8 @@ const toTheReposBtn = (author:string,repos:string) => {
 <style scoped lang="less">
 @import "@/assets/base.less";
 
+
+
 .search-repos-box {
   margin-top: 10px;
   overflow-y: scroll;
@@ -167,6 +169,7 @@ const toTheReposBtn = (author:string,repos:string) => {
       background-color: #c6c6c6;
     }
   }
+
 }
 
 .search-value-model {

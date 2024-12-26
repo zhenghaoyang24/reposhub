@@ -62,7 +62,7 @@ watchEffect(() => {
 
 <style scoped lang="less">
 @import "@/assets/base.less";
-
+@import "@/assets/common-styles-less.less";
 .content-main {
   padding: 10px;
   flex: 1;
@@ -90,9 +90,7 @@ watchEffect(() => {
     width: 10px;
     background-color: #2c2c2c;
   }
-
   /* 暗色模式下的滚动条滑块样式 */
-
   &::-webkit-scrollbar-thumb {
     background-color: #9e9e9e;
     border-radius: 5px;

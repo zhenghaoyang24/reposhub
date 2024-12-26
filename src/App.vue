@@ -62,10 +62,12 @@ watchEffect(() => {
 
 <style scoped lang="less">
 @import "@/assets/base.less";
+
 .content-main {
   padding: 10px;
   flex: 1;
 }
+
 //repos布局
 .repos-content-box {
   display: grid;

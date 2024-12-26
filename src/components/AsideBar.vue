@@ -34,6 +34,7 @@ const theCategoryBtn = (value: String) => {
       font-size: 11px;
     }
   }
+
   padding: 5px;
   width: @left-aside-width;
   overflow-y: auto; /* 当内容超出时出现垂直滚动条 */
@@ -49,20 +50,6 @@ const theCategoryBtn = (value: String) => {
     min-width: fit-content;
   }
   .scrollbar(10px, 10px, var(--scrollbar-bg-color), var(--scrollbar-thumb-bg-color), var(--scrollbar-thumb-bg-color-hover), 4px);
-  //&::-webkit-scrollbar {
-  //  width: 10px;
-  //  background-color: #2c2c2c;
-  //}
-  //
-  ///* 暗色模式下的滚动条滑块样式 */
-  //
-  //&::-webkit-scrollbar-thumb {
-  //  background-color: #9e9e9e;
-  //  border-radius: 5px;
-  //
-  //  &:hover {
-  //    background-color: #c6c6c6;
-  //  }
-  //}
+
 }
 </style>

@@ -57,6 +57,7 @@ const searchInputModelBtn = (v: string) => {
 // 动态搜索
 import allRepos from '@/data/repos.json';
 import ReposIcon from "@/components/icons/ReposIcon.vue";
+
 const author = ref()
 const repos = ref()
 const reposArr = ref()
@@ -80,7 +81,7 @@ watch(inputValue, (newValue) => {
   }
 }, {immediate: true})
 
-const toTheReposBtn = (author:string,repos:string) => {
+const toTheReposBtn = (author: string, repos: string) => {
   window.open(`https://github.com/${author}/${repos}`);
 }
 
@@ -120,11 +121,12 @@ const toTheReposBtn = (author:string,repos:string) => {
 @import "@/assets/base.less";
 
 
-
 .search-repos-box {
   margin-top: 10px;
   overflow-y: scroll;
   max-height: 100%;
+  transition: all @transition-time;
+
   .search-repos-item {
     display: flex;
     align-items: center;
@@ -139,17 +141,20 @@ const toTheReposBtn = (author:string,repos:string) => {
     &:hover {
       background-color: var(--hover-bg-color)
     }
-    >span:nth-child(1){
+
+    > span:nth-child(1) {
       display: flex;
       align-items: center;
-      >span{
+
+      > span {
         font-size: 15px;
         margin-left: 4px;
         font-weight: lighter;
         color: var(--p-text-color);
       }
     }
-    >span:nth-child(2){
+
+    > span:nth-child(2) {
       font-size: 15px;
       color: var(--s-text-color);
       @media (max-width: @mobile-width) {
@@ -157,20 +162,8 @@ const toTheReposBtn = (author:string,repos:string) => {
       }
     }
   }
-  .scrollbar(10px, 10px, var(--scrollbar-bg-color), var(--scrollbar-thumb-bg-color), var(--scrollbar-thumb-bg-color-hover), 4px);
-  //&::-webkit-scrollbar {
-  //  width: 10px;
-  //  background-color: #2c2c2c;
-  //}
-  ///* 暗色模式下的滚动条滑块样式 */
-  //&::-webkit-scrollbar-thumb {
-  //  background-color: #9e9e9e;
-  //  border-radius: 5px;
-  //  &:hover {
-  //    background-color: #c6c6c6;
-  //  }
-  //}
 
+  .scrollbar(10px, 10px, var(--scrollbar-bg-color), var(--scrollbar-thumb-bg-color), var(--scrollbar-thumb-bg-color-hover), 4px);
 }
 
 .search-value-model {

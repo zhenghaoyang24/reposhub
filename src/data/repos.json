@@ -108,5 +108,10 @@
     "type": "documents/learning",
     "author": "wangzheng0822",
     "reposName": "algo"
+  },
+  {
+    "type": "documents/learning",
+    "author": "ruanyf",
+    "reposName": "es6tutorial"
   }
 ]

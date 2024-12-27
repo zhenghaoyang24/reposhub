@@ -123,11 +123,11 @@ const toTheReposBtn = (author: string, repos: string) => {
 
 .search-repos-box {
   margin-top: 10px;
-  overflow-y: scroll;
+  overflow:hidden auto;
   max-height: 100%;
   transition: all @transition-time;
-
   .search-repos-item {
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -162,7 +162,6 @@ const toTheReposBtn = (author: string, repos: string) => {
       }
     }
   }
-
   .scrollbar(10px, 10px, var(--scrollbar-bg-color), var(--scrollbar-thumb-bg-color), var(--scrollbar-thumb-bg-color-hover), 4px);
 }
 

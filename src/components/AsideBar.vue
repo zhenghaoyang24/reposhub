@@ -37,7 +37,7 @@ const theCategoryBtn = (value: String) => {
 
   padding: 5px;
   width: @left-aside-width;
-  overflow-y: auto; /* 当内容超出时出现垂直滚动条 */
+  overflow:hidden auto;
   height: calc(100vh - @nav-height);
   background: none;
   box-sizing: border-box;

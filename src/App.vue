@@ -51,7 +51,9 @@ watchEffect(() => {
     <AsideBar></AsideBar>
     <div class="content-main">
       <CategoryCatalog></CategoryCatalog>
-      <CategoryTabs></CategoryTabs>
+      <div style="display: flex">
+        <CategoryTabs></CategoryTabs>
+      </div>
       <div class="repos-content-box">
         <ReposCard v-for="item in reposArr" :reposName="item.reposName" :author="item.author"
                    :key="`${item.author}/${item.reposName}`"></ReposCard>
@@ -80,7 +82,7 @@ watchEffect(() => {
   color: #fdfdfd;
   box-sizing: border-box;
   max-height: calc(100vh - 175px);
-  overflow-y: auto; /* 当内容超出时出现垂直滚动条 */
+  overflow:hidden auto;
   .scrollbar(10px, 10px, var(--scrollbar-bg-color), var(--scrollbar-thumb-bg-color), var(--scrollbar-thumb-bg-color-hover), 4px);
 }
 

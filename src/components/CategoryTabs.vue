@@ -33,17 +33,19 @@ const tabCategoryChildBtn = (value:String)=>{
 <style scoped lang="less">
 @import "@/assets/base.less";
 .category-tabs-content {
-
+  flex: 1;
   margin-top: 10px;
   color: var(--s-text-color);
   display: flex;
-
+  flex-wrap: wrap;
   >span{
+    text-wrap: nowrap;
     transition: all @transition-time;
     border-bottom: 2px var(--p-color) solid;
     cursor: pointer;
     margin-right: 5px;
     padding: 10px 10px;
+    box-sizing: border-box;
     color: var(--s-text-color);
     &:hover{
       color: var(--p-text-color);

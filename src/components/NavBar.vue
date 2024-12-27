@@ -16,7 +16,7 @@ const searchStatue = inject('searchStatue', () => {
 
 <template>
   <nav class="navbar">
-    <router-link to="/" class="web-icon">Repos</router-link>
+    <router-link to="/" class="web-icon">repos</router-link>
     <SearchInput v-if="!searchStatue"></SearchInput>
     <div class="nav-ctrl">
       <ThemeChange></ThemeChange>

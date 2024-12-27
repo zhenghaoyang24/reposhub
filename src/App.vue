@@ -83,7 +83,7 @@ watchEffect(() => {
   box-sizing: border-box;
   max-height: calc(100vh - 175px);
   overflow:hidden auto;
-  .scrollbar(10px, 10px, var(--scrollbar-bg-color), var(--scrollbar-thumb-bg-color), var(--scrollbar-thumb-bg-color-hover), 4px);
+  .scrollbar(10px, 10px, var(--p-color), var(--scrollbar-thumb-bg-color), var(--scrollbar-thumb-bg-color-hover), 4px);
 }
 
 @media (max-width: @pad-width) {

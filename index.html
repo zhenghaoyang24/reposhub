@@ -77,9 +77,9 @@
     const app = document.getElementById('app');
     const loading = document.getElementById('loading');
     setTimeout(() => {
-        loading.style.display = 'none';
         app.style.display = 'block';
-    }, 30000);
+        loading.parentNode.removeChild(loading);  //从dom移除
+    }, 1500);
 </script>
 </body>
 </html>

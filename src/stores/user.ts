@@ -48,9 +48,9 @@ export const useUserStore = defineStore('user', () => {
             repos.reposName = reposName
             return likeReposArrayStore.value.push(repos)
         }
-    const removeLikeReposStoreFn = (author: string, reposName: string) => {
-        likeReposArrayStore.value = likeReposArrayStore.value.filter(item => (item.author !== author) || (item.reposName !== reposName))
-    }
+        const removeLikeReposStoreFn = (author: string, reposName: string) => {
+            likeReposArrayStore.value = likeReposArrayStore.value.filter(item => (item.author !== author) || (item.reposName !== reposName))
+        }
 
         return {
             likeReposArrayStore,
@@ -66,7 +66,7 @@ export const useUserStore = defineStore('user', () => {
         }
     }, {
         persist: {
-            pick: ['dataTheme','likeReposArrayStore']
+            pick: ['dataTheme', 'likeReposArrayStore']
         }
     }
 )

@@ -161,6 +161,7 @@ const toTheReposBtn = (author: string, repos: string) => {
       }
     }
   }
+
   .scrollbar(10px, 10px, var(--p-color), var(--scrollbar-thumb-bg-color), var(--scrollbar-thumb-bg-color-hover), 4px);
 }
 

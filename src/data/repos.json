@@ -90,27 +90,27 @@
     "reposName": "CloudFlare-ImgBed"
   },
   {
-    "type": "documents/learning",
+    "type": "doc/learning",
     "author": "krahets",
     "reposName": "hello-algo"
   },
   {
-    "type": "documents/resources",
+    "type": "doc/resources",
     "author": "zhenghaoyang24",
     "reposName": "english-vocabulary"
   },
   {
-    "type": "documents/resources",
+    "type": "doc/resources",
     "author": "KyleBing",
     "reposName": "english-vocabulary"
   },
   {
-    "type": "documents/learning",
+    "type": "doc/learning",
     "author": "wangzheng0822",
     "reposName": "algo"
   },
   {
-    "type": "documents/learning",
+    "type": "doc/learning",
     "author": "ruanyf",
     "reposName": "es6tutorial"
   }

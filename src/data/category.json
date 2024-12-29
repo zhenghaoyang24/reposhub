@@ -26,8 +26,8 @@
     ]
   },
   {
-    "type": "documents",
-    "icon":"subway:document-3",
+    "type": "doc",
+    "icon":"mingcute:file-fill",
     "children":[
       {"type":"learning"},
       {"type":"resources"}
